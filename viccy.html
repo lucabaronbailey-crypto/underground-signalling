@@ -4,7 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victoria Line Signalling</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #map-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        #signalling-map {
+            display: block;
+            max-width: 95vw;
+            height: auto;
+            border: 1px solid #444;
+        }
+
+        #train-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let clicks pass through to the image */
+        }
+
+        /* This styles the red teleporting train blocks */
+        .train {
+            position: absolute;
+            width: 22px;
+            height: 11px;
+            background-color: #ff0000;
+            border: 1px solid #ffffff;
+            color: white;
+            font-size: 8px;
+            text-align: center;
+            line-height: 11px;
+            font-weight: bold;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,17 +64,26 @@
 
     <script>
         const map = document.getElementById('signalling-map');
-        
+        const trainLayer = document.getElementById('train-layer');
+
+        // This function handles the clicking to get coordinates
         map.addEventListener('click', function(e) {
             const rect = map.getBoundingClientRect();
-            // Calculates position as a percentage of the image
+            
+            // Calculate X and Y as percentages of the image size
             const x = ((e.clientX - rect.left) / rect.width) * 100;
             const y = ((e.clientY - rect.top) / rect.height) * 100;
             
-            // This logs it to your browser console (F12) and shows an alert
+            // Log to console (F12) and show an alert
             console.log(`X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}`);
             alert(`Berth Coordinates:\nX: ${x.toFixed(2)}\nY: ${y.toFixed(2)}`);
         });
+
+        /* FUTURE STEP: 
+           This is where we will add the TrackerNet API 
+           fetching logic to create <div class="train"> 
+           elements inside the trainLayer.
+        */
     </script>
 
 </body>
