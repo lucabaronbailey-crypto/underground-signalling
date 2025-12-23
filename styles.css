@@ -1,71 +1,44 @@
-/* --- 1. Global Reset & UI --- */
-body, html {
+body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    background-color: #0b0b0b; /* Deep black for better contrast */
-    color: #ffffff;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    overflow: hidden; /* Lock the main window so only the map scrolls */
-}
-
-/* --- 2. The Viewport (The "Window" you look through) --- */
-.map-viewport {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: auto;
-    overflow-y: auto;
+    background-color: #111;
     display: flex;
-    align-items: center; 
-    cursor: crosshair;
-    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    font-family: sans-serif;
 }
 
-/* --- 3. The Wrapper (Holds the Image + Markers) --- */
-.diagram-wrapper {
+#map-container {
     position: relative;
-    display: inline-block; 
-    padding: 100px; /* Extra space to ensure signals aren't cut off at edges */
+    display: inline-block;
+    margin-top: 20px;
 }
 
-/* --- 4. The Signal Map Image --- */
 #signalling-map {
     display: block;
+    max-width: 95vw;
     height: auto;
-    /* Keeps the schematic lines razor sharp */
-    image-rendering: -webkit-optimize-contrast; 
-    image-rendering: crisp-edges;
-    border: 1px solid #222;
+    border: 1px solid #444;
 }
 
-/* --- 5. Train Number Markers --- */
-.train-marker {
+#train-layer {
     position: absolute;
-    background: #f8ff00; /* Victoria Line Yellow */
-    color: #000;
-    padding: 2px 6px;
-    font-family: 'Consolas', 'monaco', monospace;
-    font-weight: bold;
-    font-size: 13px;
-    border: 2px solid #000;
-    border-radius: 2px;
-    box-shadow: 0 0 8px rgba(248, 255, 0, 0.4);
-    transform: translate(-50%, -50%); /* Centers marker on the coordinate */
-    z-index: 10;
-    white-space: nowrap;
-    transition: all 0.5s ease; /* Smoothly slide the train when coordinates update */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-/* --- 6. The HUD / Control Panel --- */
-#ui-overlay {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background: rgba(15, 15, 15, 0.9);
-    padding: 12px 20px;
-    border-radius: 4px;
-    border-left: 4px solid #00a0e2; /* Victoria Line Blue accent */
-    pointer-events: none;
-    z-index: 100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+.train {
+    position: absolute;
+    width: 22px;
+    height: 11px;
+    background-color: #ff0000;
+    border: 1px solid #ffffff;
+    color: white;
+    font-size: 8px;
+    text-align: center;
+    line-height: 11px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
