@@ -3,32 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victoria Line | Signal Plotter</title>
+    <title>Victoria Line Signalling</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div id="ui-overlay">
-        <strong>Victoria Line Live</strong><br>
-        <small id="status">Ready to track</small>
-    </div>
-
-    <div class="map-viewport">
-        <div class="diagram-wrapper">
-            <img src="./viccy_full.jpg" id="signalling-map" alt="Victoria Line Signalling Diagram">
-        </div>
+    <div id="map-container">
+        <img src="viccy_map.jpg" id="signalling-map" alt="Victoria Line Diagram">
+        
+        <div id="train-layer"></div>
     </div>
 
     <script>
-        // Use this to log pixel coordinates to the console (F12)
-        const viewport = document.querySelector('.map-viewport');
-        const map = document.querySelector('#signalling-map');
-
-        viewport.addEventListener('click', (e) => {
+        const map = document.getElementById('signalling-map');
+        
+        map.addEventListener('click', function(e) {
             const rect = map.getBoundingClientRect();
-            const x = Math.round(e.pageX - rect.left + viewport.scrollLeft);
-            const y = Math.round(e.pageY - rect.top);
-            console.log(`Mapping Coord -> X: ${x}, Y: ${y}`);
+            // Calculates position as a percentage of the image
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            // This logs it to your browser console (F12) and shows an alert
+            console.log(`X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}`);
+            alert(`Berth Coordinates:\nX: ${x.toFixed(2)}\nY: ${y.toFixed(2)}`);
         });
     </script>
 
