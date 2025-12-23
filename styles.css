@@ -2,22 +2,22 @@ body {
     margin: 0;
     padding: 0;
     background-color: #111;
-    display: flex;
-    justify-content: center;
-    font-family: sans-serif;
+    /* Allows the page to scroll horizontally if the image is wider than the screen */
+    overflow-x: auto; 
+    overflow-y: hidden; /* Keeps the height fixed to the screen */
+    display: block; /* Changed from flex to allow natural scrolling */
 }
 
 #map-container {
     position: relative;
     display: inline-block;
-    margin-top: 20px;
+    height: 100vh; /* Takes full height of the browser window */
 }
 
 #signalling-map {
+    height: 100vh; /* Forces the image to be exactly as tall as the screen */
+    width: auto;   /* Automatically adjusts width to keep the map's proportions */
     display: block;
-    max-width: 95vw;
-    height: auto;
-    border: 1px solid #444;
 }
 
 #train-layer {
@@ -39,6 +39,7 @@ body {
     font-size: 8px;
     text-align: center;
     line-height: 11px;
+    font-weight: bold;
     transform: translate(-50%, -50%);
     z-index: 10;
 }

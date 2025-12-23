@@ -9,27 +9,20 @@
 <body>
 
     <div id="map-container">
-        <img src="viccy_full.jpg" id="signalling-map" alt="Victoria Line Diagram">
+        <img src="viccy_map.jpg" id="signalling-map" alt="Victoria Line Diagram">
         <div id="train-layer"></div>
     </div>
 
     <script>
         const map = document.getElementById('signalling-map');
         
-        // This checks if the image actually loaded
-        map.onload = function() {
-            console.log("Image loaded successfully");
-        };
-        map.onerror = function() {
-            alert("Error: The image 'viccy_map.jpg' could not be found in your folder.");
-        };
-
         map.addEventListener('click', function(e) {
             const rect = map.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
             const y = ((e.clientY - rect.top) / rect.height) * 100;
             
             alert(`Coordinates:\nX: ${x.toFixed(2)}\nY: ${y.toFixed(2)}`);
+            console.log(`X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}`);
         });
     </script>
 
