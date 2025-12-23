@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria Line | Signal Plotter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="ui-overlay">
+        <strong>Victoria Line Live</strong><br>
+        <small id="status">Ready to track</small>
+    </div>
+
+    <div class="map-viewport">
+        <div class="diagram-wrapper">
+            <img src="./viccy_full.png" id="signalling-map" alt="Victoria Line Signalling Diagram">
+            
+            <div class="train-marker" style="top: 45%; left: 1200px;">210</div>
+            <div class="train-marker" style="top: 55%; left: 3500px;">244</div>
+        </div>
+    </div>
+
+    <script>
+        // Use this to log pixel coordinates to the console (F12)
+        const viewport = document.querySelector('.map-viewport');
+        const map = document.querySelector('#signalling-map');
+
+        viewport.addEventListener('click', (e) => {
+            const rect = map.getBoundingClientRect();
+            const x = Math.round(e.pageX - rect.left + viewport.scrollLeft);
+            const y = Math.round(e.pageY - rect.top);
+            console.log(`Mapping Coord -> X: ${x}, Y: ${y}`);
+        });
+    </script>
+
+</body>
+</html>

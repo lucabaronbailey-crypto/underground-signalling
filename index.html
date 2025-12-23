@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Underground Signalling Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Homepage Specific Overrides */
+        body {
+            overflow-y: auto !important; /* Allow vertical scrolling for the menu */
+            display: block !important;
+            background-color: #0b0b0b;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 50px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        .line-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* Line Card Styling */
+        .line-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.2s, filter 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .line-button:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.2);
+        }
+
+        /* Official Colors */
+        .vic  { background-color: #00A0E2; }
+        .bak  { background-color: #B36305; }
+        .cen  { background-color: #E32017; }
+        .dis  { background-color: #00782A; }
+        .jub  { background-color: #A0A5A9; }
+        .nor  { background-color: #000000; border: 1px solid #444; }
+        .pic  { background-color: #003688; }
+        .met  { background-color: #9B0056; }
+        .ham  { background-color: #F3A9BB; color: black; }
+        .wat  { background-color: #95CDBA; color: black; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Signalling Dashboard</h1>
+            <p style="color: #888;">Select a line to view live signalling blocks</p>
+        </header>
+
+        <nav class="line-grid">
+            <a href="viccy.html" class="line-button vic">Victoria</a>
+            
+            <a href="#" class="line-button bak">Bakerloo</a>
+            <a href="#" class="line-button cen">Central</a>
+            <a href="#" class="line-button dis">District</a>
+            <a href="#" class="line-button jub">Jubilee</a>
+            <a href="#" class="line-button met">Metropolitan</a>
+            <a href="#" class="line-button nor">Northern</a>
+            <a href="#" class="line-button pic">Piccadilly</a>
+            <a href="#" class="line-button ham">Ham & City</a>
+            <a href="#" class="line-button wat">Waterloo & City</a>
+        </nav>
+    </div>
+
+</body>
+</html>
